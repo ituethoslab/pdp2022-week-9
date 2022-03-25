@@ -12,3 +12,22 @@ with open('r-replika-comment.csv', encoding='utf-8') as csvfile:
         creation_timestamp = int(comment['created_utc'])
         comment['created'] = datetime.fromtimestamp(creation_timestamp)
         replika_comments.append(comment)
+
+def group_comments(comments):
+    """Group comments by their OP."""
+    grouping = {}
+    for comment in comments:
+        permalink_split = comment['permalink'].split('/')
+        op_title = permalink_split[5]
+        if op_title in grouping:
+            grouping[op_title].append(comment)
+        else:
+            grouping[op_title] = [comment]
+    return grouping
+
+def count_comments(comments):
+    groupings = group_comments(comments)
+    counts = groupings.copy()
+    for op_title in groupings:
+        counts[op_title] = len(counts[op_title])
+    return counts
