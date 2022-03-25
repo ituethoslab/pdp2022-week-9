@@ -31,3 +31,11 @@ def count_comments(comments):
     for op_title in groupings:
         counts[op_title] = len(counts[op_title])
     return counts
+
+def weekend_comments(comments):
+    """Return list of comments posted during the weekend."""
+    we_comments = []
+    for comment in comments:
+        if comment['created'].weekday() >= 5:
+            we_comments.append(comment)
+    return we_comments
