@@ -39,3 +39,8 @@ def weekend_comments(comments):
         if comment['created'].weekday() >= 5:
             we_comments.append(comment)
     return we_comments
+
+def print_comment_bodies(comments):
+    for comment in comments:
+        body = comment['body']
+        print(f"💬 {body}")
