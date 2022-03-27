@@ -44,3 +44,5 @@ def print_comment_bodies(comments):
     for comment in comments:
         body = comment['body']
         print(f"💬 {body}")
+
+print_comment_bodies(replika_comments)
